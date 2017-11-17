@@ -40,6 +40,7 @@ func main() {
 		f = func(n int) []byte {
 			return Str
 		}
+		Len = len(Str)
 	} else {
 		f = RandString
 	}
