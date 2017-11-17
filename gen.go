@@ -18,8 +18,8 @@ const (
 func RandString(n int) []byte {
 	b := make([]byte, n)
 
-	r := randSource.Int63()
-	for i := 0; i < len(b); i++ {
+	for i := 0; i < len(b); {
+		r := randSource.Int63()
 		for j := 0; j < bitSlices; j++ {
 			idx := r & bitMask
 			b[i] = base64chars[idx]
