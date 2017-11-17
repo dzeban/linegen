@@ -23,6 +23,12 @@ func init() {
 	flag.Usage = usage
 	flag.IntVar(&Len, "len", 10, "Length of random string to generate")
 	flag.Parse()
+
+	if Len > 65536 || Len < 1 {
+		fmt.Fprintln(os.Stderr, "Invalid len, must be 1..65536")
+		os.Exit(1)
+	}
+
 	if flag.NArg() == 1 {
 		Str = []byte(flag.Arg(0) + "\n")
 	}
